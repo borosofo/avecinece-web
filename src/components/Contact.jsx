@@ -4,9 +4,9 @@ export default function Contact({ site }) {
   return (
     <section className="contact" id="contacto">
       <svg className="contact-spray" viewBox="0 0 300 300" aria-hidden="true">
-        <ellipse cx="150" cy="140" rx="140" ry="80" fill="#e2482e" transform="rotate(-18 150 140)" />
-        <circle cx="60" cy="220" r="26" fill="#f2a413" />
-        <circle cx="250" cy="60" r="18" fill="#f2a413" />
+        <ellipse cx="150" cy="140" rx="140" ry="80" fill="#0dccf2" transform="rotate(-18 150 140)" />
+        <circle cx="60" cy="220" r="26" fill="#f20dcc" />
+        <circle cx="250" cy="60" r="18" fill="#f20dcc" />
       </svg>
       <div className="wrap">
         <div className="section-kicker">Contacto</div>
@@ -25,7 +25,7 @@ export default function Contact({ site }) {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <span className="contact-link-icon" style={{ background: '#e2482e' }}>◉</span>
+              <span className="contact-link-icon" style={{ background: '#f20dcc' }}>◉</span>
               <span>
                 <b>Instagram</b>
                 <span>{contact.instagramHandle}</span>
@@ -33,7 +33,7 @@ export default function Contact({ site }) {
             </a>
 
             <a className="contact-link" href={`mailto:${contact.email}`}>
-              <span className="contact-link-icon" style={{ background: '#f2a413' }}>✉</span>
+              <span className="contact-link-icon" style={{ background: '#0dccf2' }}>✉</span>
               <span>
                 <b>Correo</b>
                 <span>{contact.email}</span>
@@ -48,7 +48,7 @@ export default function Contact({ site }) {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span className="contact-link-icon" style={{ background: '#2e7dbd' }}>▶</span>
+                <span className="contact-link-icon" style={{ background: '#0dccf2' }}>▶</span>
                 <span>
                   <b>YouTube</b>
                   <span>{v.label}</span>

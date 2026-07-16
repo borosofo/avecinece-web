@@ -8,11 +8,11 @@ export default function Hero({ projects }) {
   ]
 
   const tags = [
-    ['Murales', '#2e7dbd'],
-    ['Ferias', '#f2a413'],
-    ['Festivales', '#e2482e'],
-    ['Talleres', '#5da03c'],
-    ['Laboratorios', '#8752a3'],
+    ['Murales', '#f20dcc'],
+    ['Ferias', '#0dccf2'],
+    ['Festivales', '#f20dcc'],
+    ['Talleres', '#0dccf2'],
+    ['Laboratorios', '#f20dcc'],
   ]
 
   return (

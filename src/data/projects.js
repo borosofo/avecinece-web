@@ -18,7 +18,7 @@ export const projects = [
     date: 'Octubre 2020',
     year: '2020',
     category: 'Feria',
-    color: '#f2a413',
+    color: '#f20dcc',
     description:
       'Nuestro primer gran paso. Llevamos al Parkway un espacio de arte y encuentro: mediante carritos ambulantes hechos de sofás reciclados, invitamos a artistas emergentes a difundir su obra, promoviendo la sostenibilidad y redefiniendo el uso del espacio público. Esta iniciativa rompió el aislamiento producto de la pandemia, fomentando la conexión y el diálogo entre la comunidad. Más que una muestra artística, fue un acto de unión y celebración de la creatividad colectiva: el arte tiene el poder de revitalizar nuestros espacios y tejer lazos de pertenencia.',
     photos: imgs('feria-ambulante', 4, {
@@ -35,7 +35,7 @@ export const projects = [
     date: 'Diciembre 2021',
     year: '2021',
     category: 'Mural',
-    color: '#5da03c',
+    color: '#f20dcc',
     description:
       'Viajamos al corazón de Peña Negra, Cachipay, para infundir identidad y orgullo en la comunidad a través del arte. Con la colaboración de jóvenes locales, nuestro proyecto cobró vida al ser seleccionados por la convocatoria "Jóvenes en Movimiento 2021" del Ministerio de Cultura. Este reconocimiento nos permitió llevar a cabo talleres de fotografía y stencil, realizar una cartografía social y, finalmente, crear un mural en la calle principal que se convirtió en el alma del pueblo.',
     video: 'https://youtu.be/U-0ZuoVyq0I',
@@ -54,7 +54,7 @@ export const projects = [
     date: 'Mayo 2022',
     year: '2022',
     category: 'Mural',
-    color: '#2e7dbd',
+    color: '#f20dcc',
     description:
       'Intervención artística en uno de los muros del espacio público en el Campamento Férreo de Facatativá, en colaboración con el INVIAS para el programa "Vive Colombia — Vías Verdes". Transformamos edificaciones férreas en emblemas culturales y turísticos junto a jóvenes del territorio, plasmando lo ancestral, el alma del ferrocarril, la biodiversidad y las vías verdes en una jornada colectiva de pintura.',
     photos: imgs('ferrocarril', 4, {
@@ -72,7 +72,7 @@ export const projects = [
     date: 'Agosto 2022',
     year: '2022',
     category: 'Festival',
-    color: '#e2482e',
+    color: '#f20dcc',
     description:
       'Festival itinerante que nace del deseo de conmemorar los 49 años del nacimiento del hip hop, en juntanza y organización colectiva de cuatro parches artísticos de Teusaquillo: Avecínece, Discos Melcocha, La Melómana y La Hoguera. Talleres de stencil por Afasio, cine-foro sobre la historia del hip hop en Estados Unidos y Bogotá, muestras de rap con Black Woman, breakdance, scratch y graffiti.',
     photos: imgs('tejido-hiphop', 12, {
@@ -90,7 +90,7 @@ export const projects = [
     date: 'Agosto – Octubre 2023',
     year: '2023',
     category: 'Laboratorio',
-    color: '#8752a3',
+    color: '#f20dcc',
     description:
       'Financiado con la Beca de Estrategias Novedosas de la Secretaría de Cultura, Recreación y Deporte, MovilizArte plasmó — mediante dibujo, collage, stencil, graffiti, serigrafía y videomapping — algunas de las interpretaciones de la identidad bogotana. A través de cuatro laboratorios artísticos móviles realizamos talleres y espacios pedagógicos en el espacio público, buscando ser accesibles para cualquier persona y llevar los espacios culturales a los transeúntes.',
     quote:
@@ -112,7 +112,7 @@ export const projects = [
     date: 'Noviembre 2023',
     year: '2023',
     category: 'Festival',
-    color: '#f2a413',
+    color: '#f20dcc',
     description:
       'Festival de graffiti y arte en el Barrio Libertador, punto clave camino al Nevado del Tolima. Se intervinieron alrededor de 16 muros y fachadas para darle otro significado y un atractivo turístico al barrio, plasmando la esencia del territorio y elementos relevantes para sus habitantes. El proceso incluyó talleres con los niños y jóvenes del barrio, incentivando las prácticas artísticas y la apropiación del territorio.',
     photos: imgs('memorias-color', 14, {
@@ -129,7 +129,7 @@ export const projects = [
     date: 'Noviembre 2023',
     year: '2023',
     category: 'Mural',
-    color: '#5da03c',
+    color: '#f20dcc',
     description:
       'Contratados por la Agencia Nacional de Reincorporación (ARN), viajamos a Arauca para realizar un mural en la casa de los Derechos Humanos de la comunidad de Filipinas. Hicimos un ejercicio de cartografía con la comunidad y personas reincorporadas para co-crear el diseño: la palabra "juntanza" y la imagen de dos personas abrazándose. De la mano de personas de diferentes edades pintamos el mural durante dos días, acompañados por representantes de Naciones Unidas y ONG con procesos en la región. Un proceso inspirador que cumple la misión de Avecínece: llevar el arte a diferentes partes del país promoviendo una cultura de paz y comunidad.',
     photos: imgs('aectr', 12, {
