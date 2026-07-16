@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Colectivo Avecínece — Portafolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --black:#050505;
+    --white:#f5f0e8;
+    --gray:#1a1a1a;
+    --accent1:#e63e2f;
+    --accent2:#f5a623;
+    --accent3:#4a9fd4;
+    --accent4:#7ec845;
+    --muted:#888;
+  }
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--black);
+    color:var(--white);
+    font-family:'Space Grotesk',sans-serif;
+    max-width:430px;
+    margin:0 auto;
+    overflow-x:hidden;
+  }
+
+  /* ── SPLASH CANVAS ── */
+  .splash-canvas{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:hidden}
+
+  /* ── HERO ── */
+  .hero{
+    position:relative;
+    height:100svh;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    padding:2rem 1.5rem;
+    overflow:hidden;
+    background:var(--black);
+  }
+  .hero-title{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:4.5rem;
+    line-height:0.9;
+    letter-spacing:-1px;
+    position:relative;
+    z-index:2;
+  }
+  .hero-title span{color:var(--accent1)}
+  .hero-sub{
+    font-size:0.75rem;
+    letter-spacing:0.3em;
+    color:var(--muted);
+    text-transform:uppercase;
+    margin-top:1rem;
+    position:relative;
+    z-index:2;
+  }
+  .hero-year{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:0.9rem;
+    letter-spacing:0.25em;
+    color:var(--accent2);
+    margin-top:0.5rem;
+    position:relative;
+    z-index:2;
+  }
+  .scroll-hint{
+    position:absolute;
+    bottom:2rem;
+    right:1.5rem;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:6px;
+    z-index:2;
+  }
+  .scroll-hint span{font-size:0.6rem;letter-spacing:0.2em;color:var(--muted);text-transform:uppercase;writing-mode:vertical-rl}
+  .scroll-line{width:1px;height:50px;background:linear-gradient(to bottom,var(--muted),transparent)}
+
+  /* ── NAV ── */
+  nav{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:rgba(5,5,5,0.92);
+    backdrop-filter:blur(12px);
+    border-bottom:0.5px solid rgba(245,240,232,0.08);
+    padding:1rem 1.5rem;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
+  .nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:2px;color:var(--white)}
+  .nav-links{display:flex;gap:1.2rem}
+  .nav-links a{font-size:0.65rem;letter-spacing:0.2em;color:var(--muted);text-decoration:none;text-transform:uppercase;transition:color 0.2s}
+  .nav-links a:hover{color:var(--white)}
+
+  /* ── SECTION WRAPPER ── */
+  section{padding:3rem 1.5rem;position:relative;overflow:hidden}
+  .section-label{
+    font-size:0.6rem;
+    letter-spacing:0.35em;
+    color:var(--muted);
+    text-transform:uppercase;
+    margin-bottom:0.75rem;
+    display:flex;
+    align-items:center;
+    gap:0.75rem;
+  }
+  .section-label::before{content:'';display:block;width:24px;height:0.5px;background:var(--muted)}
+  .section-title{font-family:'Bebas Neue',sans-serif;font-size:2.4rem;line-height:1;margin-bottom:1.5rem}
+
+  /* ── ABOUT ── */
+  #about{background:var(--gray)}
+  .about-text{font-size:0.9rem;line-height:1.8;color:rgba(245,240,232,0.75)}
+  .founders{margin-top:2rem;padding-top:1.5rem;border-top:0.5px solid rgba(245,240,232,0.1)}
+  .founders-label{font-size:0.6rem;letter-spacing:0.3em;color:var(--muted);text-transform:uppercase;margin-bottom:1rem}
+  .founders-list{display:flex;flex-wrap:wrap;gap:0.5rem}
+  .founder-tag{
+    font-size:0.7rem;
+    padding:0.3rem 0.7rem;
+    border:0.5px solid rgba(245,240,232,0.15);
+    border-radius:2px;
+    color:rgba(245,240,232,0.6);
+    letter-spacing:0.05em;
+  }
+
+  /* ── VISION ── */
+  #vision{background:var(--black)}
+  .vision-card{
+    background:var(--gray);
+    border:0.5px solid rgba(245,240,232,0.06);
+    border-radius:4px;
+    padding:1.5rem;
+    margin-bottom:1rem;
+    position:relative;
+    overflow:hidden;
+  }
+  .vision-card::before{
+    content:'';
+    position:absolute;
+    top:0;left:0;
+    width:3px;height:100%;
+  }
+  .vision-card.v1::before{background:var(--accent1)}
+  .vision-card.v2::before{background:var(--accent2)}
+  .vision-card p{font-size:0.85rem;line-height:1.75;color:rgba(245,240,232,0.7)}
+
+  /* ── TIMELINE ── */
+  #timeline{background:var(--gray)}
+  .timeline{position:relative;padding-left:1.5rem}
+  .timeline::before{
+    content:'';
+    position:absolute;
+    left:0;top:0;bottom:0;
+    width:0.5px;
+    background:rgba(245,240,232,0.1);
+  }
+  .tl-item{
+    position:relative;
+    margin-bottom:2rem;
+    cursor:pointer;
+  }
+  .tl-item::before{
+    content:'';
+    position:absolute;
+    left:-1.5rem;
+    top:5px;
+    width:8px;height:8px;
+    border-radius:50%;
+    background:var(--black);
+    border:1.5px solid var(--muted);
+    transition:all 0.3s;
+  }
+  .tl-item.active::before{
+    background:var(--accent1);
+    border-color:var(--accent1);
+    box-shadow:0 0 0 4px rgba(230,62,47,0.2);
+  }
+  .tl-year{
+    font-size:0.6rem;
+    letter-spacing:0.3em;
+    color:var(--accent2);
+    text-transform:uppercase;
+    margin-bottom:0.3rem;
+  }
+  .tl-name{font-size:0.95rem;font-weight:500;margin-bottom:0.4rem;transition:color 0.3s}
+  .tl-item.active .tl-name{color:var(--accent1)}
+  .tl-loc{font-size:0.7rem;color:var(--muted);letter-spacing:0.05em}
+  .tl-desc{
+    font-size:0.82rem;
+    line-height:1.7;
+    color:rgba(245,240,232,0.6);
+    margin-top:0.75rem;
+    max-height:0;
+    overflow:hidden;
+    transition:max-height 0.4s ease;
+  }
+  .tl-item.active .tl-desc{max-height:300px}
+  .tl-tag{
+    display:inline-block;
+    font-size:0.6rem;
+    padding:0.2rem 0.5rem;
+    border-radius:2px;
+    margin-top:0.75rem;
+    letter-spacing:0.05em;
+  }
+  .tag-mural{background:rgba(74,159,212,0.15);color:var(--accent3)}
+  .tag-feria{background:rgba(245,166,35,0.15);color:var(--accent2)}
+  .tag-festival{background:rgba(230,62,47,0.15);color:var(--accent1)}
+  .tag-taller{background:rgba(126,200,69,0.15);color:var(--accent4)}
+  .tag-espacio{background:rgba(245,240,232,0.08);color:var(--muted)}
+
+  /* ── GALLERY ── */
+  #gallery{background:var(--black)}
+  .gallery-filter{display:flex;gap:0.5rem;margin-bottom:1.5rem;flex-wrap:wrap}
+  .filter-btn{
+    font-size:0.65rem;
+    padding:0.35rem 0.8rem;
+    border:0.5px solid rgba(245,240,232,0.15);
+    border-radius:2px;
+    background:transparent;
+    color:var(--muted);
+    cursor:pointer;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    transition:all 0.2s;
+    font-family:'Space Grotesk',sans-serif;
+  }
+  .filter-btn.active,.filter-btn:hover{
+    border-color:var(--accent1);
+    color:var(--white);
+  }
+  .gallery-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0.5rem;
+  }
+  .g-card{
+    position:relative;
+    border-radius:3px;
+    overflow:hidden;
+    cursor:pointer;
+    aspect-ratio:4/3;
+    background:var(--gray);
+    transition:opacity 0.3s;
+  }
+  .g-card.hidden{display:none}
+  .g-card-inner{
+    width:100%;height:100%;
+    display:flex;flex-direction:column;
+    justify-content:flex-end;
+    padding:0.75rem;
+    position:relative;
+    overflow:hidden;
+  }
+  .g-bg{
+    position:absolute;inset:0;
+    display:flex;align-items:center;justify-content:center;
+    overflow:hidden;
+  }
+  .g-name{font-size:0.72rem;font-weight:500;position:relative;z-index:1;line-height:1.2}
+  .g-year{font-size:0.6rem;color:var(--muted);position:relative;z-index:1;margin-top:2px}
+  .g-overlay{
+    position:absolute;inset:0;
+    background:linear-gradient(to top,rgba(0,0,0,0.85) 0%,rgba(0,0,0,0.2) 60%,transparent 100%);
+    z-index:0;
+  }
+  .g-card:hover .g-overlay{background:linear-gradient(to top,rgba(0,0,0,0.9) 0%,rgba(0,0,0,0.5) 100%)}
+
+  /* ── SPRAY SPLASH SVG ── */
+  .spray{position:absolute;pointer-events:none;opacity:0.08}
+
+  /* ── FOOTER ── */
+  footer{
+    padding:2.5rem 1.5rem;
+    border-top:0.5px solid rgba(245,240,232,0.08);
+    text-align:center;
+  }
+  .footer-logo{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:3px;margin-bottom:0.5rem}
+  .footer-sub{font-size:0.65rem;color:var(--muted);letter-spacing:0.3em;text-transform:uppercase}
+  .footer-dot{
+    display:inline-block;width:6px;height:6px;
+    border-radius:50%;background:var(--accent1);
+    margin:1.5rem auto;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+  .fade-in{opacity:0;animation:fadeUp 0.6s ease forwards}
+  .fade-in-1{animation-delay:0.1s}
+  .fade-in-2{animation-delay:0.25s}
+  .fade-in-3{animation-delay:0.4s}
+  @keyframes drip{0%{transform:scaleY(0);transform-origin:top}100%{transform:scaleY(1);transform-origin:top}}
+
+  /* ── SPRAY PAINT DOTS ── */
+  .spray-dot{
+    position:absolute;
+    border-radius:50%;
+    pointer-events:none;
+    opacity:0;
+    animation:sprayAppear 0.05s ease forwards;
+  }
+  @keyframes sprayAppear{to{opacity:1}}
+</style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero" id="home">
+  <svg class="splash-canvas" viewBox="0 0 430 800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <g opacity="0.12">
+      <ellipse cx="360" cy="120" rx="180" ry="90" fill="#e63e2f" transform="rotate(-20 360 120)"/>
+      <ellipse cx="380" cy="110" rx="60" ry="30" fill="#e63e2f" transform="rotate(-25 380 110)"/>
+      <circle cx="420" cy="95" r="15" fill="#e63e2f" opacity="0.5"/>
+      <circle cx="435" cy="145" r="8" fill="#e63e2f" opacity="0.3"/>
+    </g>
+    <g opacity="0.09">
+      <ellipse cx="60" cy="650" rx="140" ry="70" fill="#f5a623" transform="rotate(15 60 650)"/>
+      <ellipse cx="40" cy="660" rx="50" ry="22" fill="#f5a623" transform="rotate(10 40 660)"/>
+      <circle cx="10" cy="630" r="12" fill="#f5a623" opacity="0.4"/>
+    </g>
+    <g opacity="0.06">
+      <ellipse cx="200" cy="400" rx="200" ry="100" fill="#4a9fd4" transform="rotate(5 200 400)"/>
+    </g>
+    <!-- Spray dots cluster 1 -->
+    <g fill="#e63e2f" opacity="0.15">
+      <circle cx="330" cy="200" r="3"/>
+      <circle cx="345" cy="195" r="2"/>
+      <circle cx="355" cy="210" r="1.5"/>
+      <circle cx="320" cy="215" r="2.5"/>
+      <circle cx="370" cy="205" r="1"/>
+      <circle cx="360" cy="225" r="2"/>
+      <circle cx="310" cy="195" r="1.5"/>
+    </g>
+    <!-- Spray dots cluster 2 -->
+    <g fill="#f5a623" opacity="0.12">
+      <circle cx="80" cy="580" r="3"/>
+      <circle cx="65" cy="572" r="2"/>
+      <circle cx="95" cy="595" r="1.5"/>
+      <circle cx="55" cy="588" r="2.5"/>
+    </g>
+    <!-- Drip lines -->
+    <g stroke="#e63e2f" stroke-width="1.5" opacity="0.1" fill="none">
+      <path d="M360 170 Q362 200 358 240 Q360 260 362 290"/>
+      <path d="M375 155 Q377 180 373 205"/>
+    </g>
+    <g stroke="#f5a623" stroke-width="1" opacity="0.08" fill="none">
+      <path d="M50 680 Q52 710 48 740 Q50 760 52 780"/>
+    </g>
+  </svg>
+
+  <div class="fade-in fade-in-1">
+    <div class="hero-sub">Colectivo artístico · Bogotá</div>
+    <h1 class="hero-title">AVE<span>CÍ</span><br>NECE</h1>
+    <div class="hero-year">Portafolio 2020 — 2024</div>
+  </div>
+
+  <div class="scroll-hint">
+    <span>scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ═══ NAV ═══ -->
+<nav>
+  <div class="nav-logo">AVN</div>
+  <div class="nav-links">
+    <a href="#about">Quiénes</a>
+    <a href="#timeline">Proyectos</a>
+    <a href="#gallery">Galería</a>
+  </div>
+</nav>
+
+<!-- ═══ ABOUT ═══ -->
+<section id="about">
+  <svg class="spray" style="top:-20px;right:-30px;width:180px;height:180px" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="130" cy="60" rx="100" ry="50" fill="#7ec845" transform="rotate(-30 130 60)"/>
+    <circle cx="160" cy="40" r="20" fill="#7ec845" opacity="0.5"/>
+    <circle cx="175" cy="80" r="10" fill="#7ec845" opacity="0.3"/>
+    <circle cx="145" cy="90" r="6" fill="#7ec845" opacity="0.4"/>
+    <circle cx="120" cy="30" r="5" fill="#7ec845" opacity="0.3"/>
+  </svg>
+
+  <div class="section-label">Nosotros</div>
+  <h2 class="section-title">¿Quiénes<br>somos?</h2>
+  <p class="about-text">Somos un grupo interdisciplinario de jóvenes unidos por la pasión de utilizar el arte como vehículo de cambio social. Tendemos puentes a través del conocimiento artístico para enriquecer la vida comunitaria, promoviendo la activación cultural y fortaleciendo los lazos sociales.</p>
+  <p class="about-text" style="margin-top:1rem">Creemos firmemente en el poder del arte para inspirar, conectar y transformar comunidades, impulsando iniciativas que fomentan el diálogo, la inclusión y el desarrollo sostenible.</p>
+
+  <div class="founders">
+    <div class="founders-label">Fundadores</div>
+    <div class="founders-list">
+      <span class="founder-tag">Juan Sebastián Méndez</span>
+      <span class="founder-tag">Laura Bernal Tabares</span>
+      <span class="founder-tag">Paula Andrea Trujillo</span>
+      <span class="founder-tag">Santiago Carrillo</span>
+      <span class="founder-tag">Mateo Polanco Bernal</span>
+      <span class="founder-tag">Javier Arias</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ VISION ═══ -->
+<section id="vision">
+  <div class="section-label">Visión</div>
+  <h2 class="section-title">¿Para dónde<br>vamos?</h2>
+
+  <div class="vision-card v1">
+    <p>Queremos consolidarnos como una red creativa y cultural que propone y gestiona diversidad de eventos para la expansión de la influencia del arte y las colectividades en la sociedad.</p>
+  </div>
+  <div class="vision-card v2">
+    <p>El sueño de Avecínece es lograr que proyectos independientes de todo el país tengan un espacio para difundir sus ideas — el arte como herramienta de reparación del tejido social.</p>
+  </div>
+</section>
+
+<!-- ═══ TIMELINE ═══ -->
+<section id="timeline">
+  <svg class="spray" style="bottom:-30px;left:-40px;width:200px;height:200px" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="60" cy="140" rx="120" ry="55" fill="#4a9fd4" transform="rotate(20 60 140)"/>
+    <circle cx="30" cy="160" r="18" fill="#4a9fd4" opacity="0.4"/>
+    <circle cx="10" cy="135" r="9" fill="#4a9fd4" opacity="0.25"/>
+  </svg>
+
+  <div class="section-label">Cronología</div>
+  <h2 class="section-title">Proyectos</h2>
+  <p style="font-size:0.78rem;color:var(--muted);margin-bottom:2rem">Toca cada proyecto para ver más detalles.</p>
+
+  <div class="timeline">
+
+    <div class="tl-item" onclick="toggleTl(this)">
+      <div class="tl-year">Oct 2020 · Bogotá</div>
+      <div class="tl-name">Feria Ambulante</div>
+      <div class="tl-loc">El Parkway</div>
+      <div class="tl-desc">Llevamos al Parkway un espacio de arte y encuentro usando carritos ambulantes hechos de sofás reciclados. Invitamos a artistas emergentes a difundir su obra, rompiendo el aislamiento de la pandemia y fomentando el diálogo comunitario.</div>
+      <span class="tl-tag tag-feria">Feria</span>
+    </div>
+
+    <div class="tl-item" onclick="toggleTl(this)">
+      <div class="tl-year">Dic 2021 · Cundinamarca</div>
+      <div class="tl-name">El mural de mi vereda</div>
+      <div class="tl-loc">Vereda Peña Negra, Cachipay</div>
+      <div class="tl-desc">Seleccionados por la convocatoria "Jóvenes en Movimiento 2021" del Ministerio de Cultura. Talleres de fotografía y stencil, cartografía social y un mural en la calle principal que se convirtió en el alma del pueblo.</div>
+      <span class="tl-tag tag-mural">Mural</span>
+    </div>
+
+    <div class="tl-item" onclick="toggleTl(this)">
+      <div class="tl-year">May 2022 · Cundinamarca</div>
+      <div class="tl-name">Mural Memoria del Ferrocarril</div>
+      <div class="tl-loc">Facatativá — Campamento Férreo</div>
+      <div class="tl-desc">En colaboración con el INVIAS para el programa "Vive Colombia — Vías Verdes". Transformamos edificaciones férreas en emblemas culturales y turísticos junto a jóvenes del Instituto Industrial de Facatativá en una jornada de dos días.</div>
+      <span class="tl-tag tag-mural">Mural</span>
+    </div>
+
+    <div class="tl-item" onclick="toggleTl(this)">
+      <div class="tl-year">May 2022 · Bogotá</div>
+      <div class="tl-name">Feria Cirkula</div>
+      <div class="tl-loc">Bogotá, Cundinamarca</div>
+      <div class="tl-desc">Feria de economía circular con talleres de costura y serigrafía, comida vegana y emprendimientos de ropa de segunda mano. Una celebración de la moda sostenible y la creatividad colectiva.</div>
+      <span class="tl-tag tag-feria">Feria</span>
+    </div>
+
+    <div class="tl-item" onclick="toggleTl(this)">
+      <div class="tl-year">May–Ene 2022–23 · Bogotá</div>
+      <div class="tl-name">Espacio Cultural "The S-Pot"</div>
+      <div class="tl-loc">Bogotá, Cundinamarca</div>
+      <div class="tl-desc">Un crisol de expresión artística que reunió talleres de costura, pintura e impresión. Un laboratorio vivo para el desarrollo cultural del sector, epicentro de juntanza y emprendimiento.</div>
+      <span class="tl-tag tag-espacio">Espacio</span>
+    </div>
+
+    <div class="tl-item" onclick="toggleTl(this)">
+      <div class="tl-year">Ago 2022 · Bogotá</div>
+      <div class="tl-name">Festival Tejido Hip Hop</div>
+      <div class="tl-loc">Teusaquillo — Varios espacios</div>
+      <div class="tl-desc">Festival itinerante en conmemoración de los 49 años del hip hop. 5 eventos explorando breakdance, scratch, graffiti y rap — junto a Discos Melcocha, La Melómana y La Hoguera.</div>
+      <span class="tl-tag tag-festival">Festival</span>
+    </div>
+
+    <div class="tl-item" onclick="toggleTl(this)">
+      <div class="tl-year">Dic 2022 · Bogotá</div>
+      <div class="tl-name">Feria Dicembrina</div>
+      <div class="tl-loc">Calle 40 #20-13</div>
+      <div class="tl-desc">Feria para despedir el año con piezas cerámicas, gráficas, tejidas y ropa de segunda vida. Incluyó un taller y galería de collage dictado por Paula Trujillo y Santiago Carrillo, y música en vivo con Oportto.</div>
+      <span class="tl-tag tag-feria">Feria</span>
+    </div>
+
+    <div class="tl-item" onclick="toggleTl(this)">
+      <div class="tl-year">Ago–Oct 2023 · Bogotá</div>
+      <div class="tl-name">MovilizArte</div>
+      <div class="tl-loc">Laboratorios itinerantes — Bogotá D.C.</div>
+      <div class="tl-desc">Financiado por la Beca de Estrategias Novedosas de la Secretaría de Cultura. Cuatro laboratorios artísticos móviles llevando talleres de dibujo, collage, stencil, graffiti, serigrafía y videomapping al espacio público en busca de identidades bogotanas.</div>
+      <span class="tl-tag tag-taller">Laboratorio</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ GALLERY ═══ -->
+<section id="gallery">
+  <div class="section-label">Galería</div>
+  <h2 class="section-title">Momentos</h2>
+
+  <div class="gallery-filter">
+    <button class="filter-btn active" onclick="filterGallery(this,'all')">Todo</button>
+    <button class="filter-btn" onclick="filterGallery(this,'mural')">Murales</button>
+    <button class="filter-btn" onclick="filterGallery(this,'feria')">Ferias</button>
+    <button class="filter-btn" onclick="filterGallery(this,'taller')">Talleres</button>
+    <button class="filter-btn" onclick="filterGallery(this,'festival')">Festivales</button>
+  </div>
+
+  <div class="gallery-grid" id="galleryGrid">
+
+    <div class="g-card" data-cat="feria">
+      <div class="g-card-inner">
+        <div class="g-bg">
+          <svg width="100%" height="100%" viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+            <rect width="200" height="150" fill="#1a1a1a"/>
+            <ellipse cx="100" cy="80" rx="90" ry="50" fill="#f5a623" opacity="0.15" transform="rotate(-10 100 80)"/>
+            <ellipse cx="60" cy="90" rx="40" ry="20" fill="#f5a623" opacity="0.1" transform="rotate(5 60 90)"/>
+            <circle cx="150" cy="60" r="25" fill="#f5a623" opacity="0.08"/>
+            <g fill="#f5a623" opacity="0.25">
+              <circle cx="30" cy="40" r="3"/><circle cx="40" cy="35" r="2"/><circle cx="25" cy="50" r="1.5"/>
+              <circle cx="170" cy="110" r="3"/><circle cx="180" cy="100" r="2"/>
+            </g>
+          </svg>
+        </div>
+        <div class="g-overlay"></div>
+        <div class="g-name">Feria Ambulante</div>
+        <div class="g-year">2020 · Parkway</div>
+      </div>
+    </div>
+
+    <div class="g-card" data-cat="mural">
+      <div class="g-card-inner">
+        <div class="g-bg">
+          <svg width="100%" height="100%" viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+            <rect width="200" height="150" fill="#1a1a1a"/>
+            <ellipse cx="100" cy="75" rx="95" ry="45" fill="#e63e2f" opacity="0.15" transform="rotate(5 100 75)"/>
+            <ellipse cx="140" cy="60" rx="50" ry="25" fill="#7ec845" opacity="0.12" transform="rotate(-8 140 60)"/>
+            <g fill="#e63e2f" opacity="0.3">
+              <circle cx="20" cy="120" r="3"/><circle cx="30" cy="115" r="2"/><circle cx="15" cy="110" r="2"/>
+            </g>
+            <g fill="#7ec845" opacity="0.3">
+              <circle cx="175" cy="30" r="3"/><circle cx="185" cy="38" r="1.5"/>
+            </g>
+          </svg>
+        </div>
+        <div class="g-overlay"></div>
+        <div class="g-name">Mural Peña Negra</div>
+        <div class="g-year">2021 · Cachipay</div>
+      </div>
+    </div>
+
+    <div class="g-card" data-cat="mural">
+      <div class="g-card-inner">
+        <div class="g-bg">
+          <svg width="100%" height="100%" viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+            <rect width="200" height="150" fill="#111"/>
+            <ellipse cx="80" cy="80" rx="100" ry="40" fill="#4a9fd4" opacity="0.15" transform="rotate(-5 80 80)"/>
+            <ellipse cx="130" cy="70" rx="60" ry="30" fill="#7ec845" opacity="0.12" transform="rotate(8 130 70)"/>
+            <ellipse cx="50" cy="100" rx="40" ry="20" fill="#e63e2f" opacity="0.1"/>
+            <g fill="#4a9fd4" opacity="0.3">
+              <circle cx="180" cy="20" r="4"/><circle cx="190" cy="30" r="2"/><circle cx="175" cy="35" r="2"/>
+            </g>
+          </svg>
+        </div>
+        <div class="g-overlay"></div>
+        <div class="g-name">Memoria del Ferrocarril</div>
+        <div class="g-year">2022 · Facatativá</div>
+      </div>
+    </div>
+
+    <div class="g-card" data-cat="feria">
+      <div class="g-card-inner">
+        <div class="g-bg">
+          <svg width="100%" height="100%" viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+            <rect width="200" height="150" fill="#151515"/>
+            <ellipse cx="100" cy="60" rx="80" ry="40" fill="#7ec845" opacity="0.14" transform="rotate(-12 100 60)"/>
+            <ellipse cx="70" cy="100" rx="50" ry="25" fill="#f5a623" opacity="0.1"/>
+            <g fill="#7ec845" opacity="0.3">
+              <circle cx="170" cy="130" r="3"/><circle cx="180" cy="120" r="2"/><circle cx="160" cy="125" r="2"/>
+            </g>
+          </svg>
+        </div>
+        <div class="g-overlay"></div>
+        <div class="g-name">Feria Cirkula</div>
+        <div class="g-year">2022 · Bogotá</div>
+      </div>
+    </div>
+
+    <div class="g-card" data-cat="festival">
+      <div class="g-card-inner">
+        <div class="g-bg">
+          <svg width="100%" height="100%" viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+            <rect width="200" height="150" fill="#0d0d0d"/>
+            <ellipse cx="110" cy="70" rx="110" ry="55" fill="#e63e2f" opacity="0.18" transform="rotate(-8 110 70)"/>
+            <ellipse cx="50" cy="80" rx="60" ry="28" fill="#f5a623" opacity="0.12"/>
+            <g fill="#e63e2f" opacity="0.35">
+              <circle cx="10" cy="30" r="4"/><circle cx="20" cy="22" r="2.5"/><circle cx="5" cy="45" r="2"/>
+              <circle cx="185" cy="130" r="3"/><circle cx="195" cy="122" r="2"/>
+            </g>
+          </svg>
+        </div>
+        <div class="g-overlay"></div>
+        <div class="g-name">Tejido Hip Hop</div>
+        <div class="g-year">2022 · Teusaquillo</div>
+      </div>
+    </div>
+
+    <div class="g-card" data-cat="taller">
+      <div class="g-card-inner">
+        <div class="g-bg">
+          <svg width="100%" height="100%" viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+            <rect width="200" height="150" fill="#131313"/>
+            <ellipse cx="100" cy="90" rx="90" ry="45" fill="#f5a623" opacity="0.14" transform="rotate(10 100 90)"/>
+            <ellipse cx="140" cy="50" rx="55" ry="25" fill="#4a9fd4" opacity="0.1" transform="rotate(-5 140 50)"/>
+            <g fill="#f5a623" opacity="0.3">
+              <circle cx="20" cy="20" r="3"/><circle cx="30" cy="15" r="2"/><circle cx="12" cy="32" r="2"/>
+            </g>
+          </svg>
+        </div>
+        <div class="g-overlay"></div>
+        <div class="g-name">Feria Dicembrina</div>
+        <div class="g-year">2022 · Bogotá</div>
+      </div>
+    </div>
+
+    <div class="g-card" data-cat="taller" style="grid-column:span 2">
+      <div class="g-card-inner" style="aspect-ratio:auto;min-height:140px">
+        <div class="g-bg" style="position:absolute;inset:0">
+          <svg width="100%" height="100%" viewBox="0 0 400 150" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+            <rect width="400" height="150" fill="#101010"/>
+            <ellipse cx="200" cy="75" rx="200" ry="60" fill="#e63e2f" opacity="0.1" transform="rotate(-5 200 75)"/>
+            <ellipse cx="80" cy="60" rx="100" ry="40" fill="#4a9fd4" opacity="0.12" transform="rotate(10 80 60)"/>
+            <ellipse cx="320" cy="100" rx="100" ry="40" fill="#7ec845" opacity="0.1" transform="rotate(-8 320 100)"/>
+            <g fill="#e63e2f" opacity="0.25">
+              <circle cx="15" cy="130" r="4"/><circle cx="25" cy="120" r="2.5"/><circle cx="8" cy="118" r="2"/>
+              <circle cx="380" cy="25" r="4"/><circle cx="392" cy="35" r="2.5"/>
+            </g>
+          </svg>
+        </div>
+        <div class="g-overlay"></div>
+        <div class="g-name">MovilizArte — Laboratorios Creativos</div>
+        <div class="g-year">2023 · Bogotá D.C.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="footer-logo">AVECÍNECE</div>
+  <div class="footer-sub">Arte · Comunidad · Transformación</div>
+  <div class="footer-dot"></div>
+  <p style="font-size:0.65rem;color:var(--muted)">Bogotá, Colombia · 2020–2024</p>
+</footer>
+
+<script>
+function toggleTl(el){
+  var all=document.querySelectorAll('.tl-item');
+  all.forEach(function(i){if(i!==el)i.classList.remove('active')});
+  el.classList.toggle('active');
+}
+
+function filterGallery(btn,cat){
+  document.querySelectorAll('.filter-btn').forEach(function(b){b.classList.remove('active')});
+  btn.classList.add('active');
+  document.querySelectorAll('.g-card').forEach(function(c){
+    if(cat==='all'||c.dataset.cat===cat){c.classList.remove('hidden')}
+    else{c.classList.add('hidden')}
+  });
+}
+
+// Intersection observer for fade-in on scroll
+if('IntersectionObserver' in window){
+  var obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)'}
+    });
+  },{threshold:0.1});
+  document.querySelectorAll('.tl-item,.vision-card,.g-card').forEach(function(el){
+    el.style.opacity='0';
+    el.style.transform='translateY(12px)';
+    el.style.transition='opacity 0.5s ease, transform 0.5s ease';
+    obs.observe(el);
+  });
+}
+</script>
+</body>
+</html>
