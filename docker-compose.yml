@@ -1,0 +1,7 @@
+services:
+  web:
+    build: .
+    container_name: avecinece-web
+    restart: unless-stopped
+    ports:
+      - "8080:80"   # cambia 8080 por el puerto que quieras exponer en el VPS
