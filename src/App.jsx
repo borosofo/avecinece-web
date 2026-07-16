@@ -6,14 +6,20 @@ import About from './components/About.jsx'
 import Projects from './components/Projects.jsx'
 import ProjectModal from './components/ProjectModal.jsx'
 import Contact from './components/Contact.jsx'
+import Marquee from './components/Marquee.jsx'
 
 export default function App() {
   const [openProject, setOpenProject] = useState(null)
   const [showTop, setShowTop] = useState(false)
+  const [progress, setProgress] = useState(0)
   const BASE = import.meta.env.BASE_URL
 
   useEffect(() => {
-    const onScroll = () => setShowTop(window.scrollY > 700)
+    const onScroll = () => {
+      setShowTop(window.scrollY > 700)
+      const max = document.documentElement.scrollHeight - window.innerHeight
+      setProgress(max > 0 ? (window.scrollY / max) * 100 : 0)
+    }
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
@@ -37,8 +43,10 @@ export default function App() {
 
   return (
     <>
+      <div className="scroll-progress" style={{ width: `${progress}%` }} />
       <Nav />
       <Hero projects={projects} />
+      <Marquee projects={projects} />
       <About site={site} projects={projects} />
       <Projects projects={projects} onOpen={setOpenProject} />
       <Contact site={site} />
